@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Tesztelés Infografika</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-emerald-50 p-6 md:p-12 text-slate-800">
+
+    <div class="max-w-4xl mx-auto space-y-10">
+        <!-- Fejléc -->
+        <div class="bg-emerald-600 rounded-3xl p-10 text-white shadow-xl flex items-center justify-between relative overflow-hidden">
+            <div class="relative z-10">
+                <h1 class="text-4xl font-black mb-2 uppercase tracking-tighter italic">Unit Tesztelés</h1>
+                <p class="text-emerald-100 text-lg italic">"Izolált egységek, villámgyors ellenőrzés."</p>
+            </div>
+            <div class="absolute -right-4 -bottom-4 opacity-20 rotate-12">
+                <i data-lucide="zap" class="w-[120px] h-[120px]"></i>
+            </div>
+        </div>
+
+        <!-- Alapfogalmak -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Izoláció -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-l-8 border-emerald-500 flex flex-col justify-between">
+                <div>
+                    <h3 class="font-bold text-xl mb-4 flex items-center gap-2 text-emerald-900 uppercase italic">
+                        <i data-lucide="shield-alert" class="text-emerald-500 w-6 h-6"></i> Mi az az IZOLÁCIÓ?
+                    </h3>
+                    <p class="text-sm text-slate-600 leading-relaxed mb-6 italic">
+                        Azt jelenti, hogy a tesztelt kód nem érheti el a külvilágot (pl. adatbázis). Ha az adatbázis lassú vagy hibázik, az nem befolyásolhatja a Unit tesztünket.
+                    </p>
+                </div>
+                <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 shadow-inner">
+                    <div class="text-[10px] font-black text-slate-400 mb-2 uppercase tracking-widest">Megoldás</div>
+                    <div class="text-xs font-black text-emerald-600 uppercase italic flex items-center gap-2">
+                        <i data-lucide="check-circle" class="w-4 h-4"></i> MOCK OBJEKTUMOK
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mocking folyamat -->
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg text-white">
+                <h3 class="font-bold text-xl mb-6 flex items-center gap-2 text-emerald-400 uppercase italic">
+                    <i data-lucide="cpu" class="w-6 h-6"></i> Mocking Folyamat
+                </h3>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-8 h-8 bg-slate-700 rounded-md flex items-center justify-center text-xs font-black shrink-0 border border-slate-600 group-hover:bg-emerald-500 transition-colors">1</div>
+                        <div class="text-xs text-slate-300 italic">Valódi adatbázis modul helyettesítése egy hamisítvánnyal.</div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-8 h-8 bg-slate-700 rounded-md flex items-center justify-center text-xs font-black shrink-0 border border-slate-600 group-hover:bg-emerald-500 transition-colors">2</div>
+                        <div class="text-xs text-slate-300 italic">Hamis válasz (mockResolvedValue) beállítása a tesztfüggvényhez.</div>
+                    </div>
+                    <div class="flex items-center gap-4 group">
+                        <div class="w-8 h-8 bg-emerald-500 rounded-md flex items-center justify-center text-xs font-black shrink-0 shadow-lg shadow-emerald-500/20 italic text-white">3</div>
+                        <div class="text-xs text-emerald-400 font-black italic uppercase">A szerver azt hiszi, beszélt az adatbázissal.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Példa felépítése -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200 relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-5">
+                <i data-lucide="microscope" class="w-[150px] h-[150px]"></i>
+            </div>
+            <h2 class="text-2xl font-black mb-8 flex items-center gap-3 text-slate-800 uppercase tracking-tighter italic">
+                <i data-lucide="microscope" class="text-emerald-500"></i> Végpont Teszt Anatómia
+            </h2>
+            
+            <div class="space-y-8 relative z-10">
+                <!-- Arrange -->
+                <div class="group border-l-4 border-emerald-100 pl-4 hover:border-emerald-500 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest italic">Arrange</span>
+                        <h4 class="font-bold text-sm text-slate-700 font-mono">mockQuery.mockResolvedValueOnce(...)</h4>
+                    </div>
+                    <p class="text-[11px] text-slate-500 italic">Előre megmondjuk a hamis adatbázisnak, mit válaszoljon a lekérdezésre.</p>
+                </div>
+
+                <!-- Act -->
+                <div class="group border-l-4 border-emerald-100 pl-4 hover:border-emerald-500 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest italic">Act</span>
+                        <h4 class="font-bold text-sm text-slate-700 font-mono">const res = await request(app).get('/api/users')</h4>
+                    </div>
+                    <p class="text-[11px] text-slate-500 italic">Végrehajtjuk a tényleges HTTP kérést a Supertest segítségével.</p>
+                </div>
+
+                <!-- Assert -->
+                <div class="group border-l-4 border-emerald-100 pl-4 hover:border-emerald-500 transition-colors">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded text-[10px] font-black uppercase tracking-widest italic">Assert</span>
+                        <h4 class="font-bold text-sm text-slate-700 font-mono">expect(res.statusCode).toBe(200)</h4>
+                    </div>
+                    <p class="text-[11px] text-slate-500 italic">Ellenőrizzük, hogy a válasz státusza és tartalma megfelel-e az elvártnak.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Előnyök listája -->
+        <div class="bg-emerald-900 rounded-3xl p-8 text-white grid grid-cols-2 md:grid-cols-4 gap-6 text-center shadow-2xl">
+            <div class="flex flex-col items-center gap-3 group">
+                <div class="bg-emerald-800 p-3 rounded-xl group-hover:bg-emerald-700 transition-colors shadow-lg">
+                    <i data-lucide="check-circle" class="text-emerald-400 w-8 h-8"></i>
+                </div>
+                <div class="text-[10px] uppercase font-black text-emerald-200 tracking-widest italic">Független</div>
+            </div>
+            <div class="flex flex-col items-center gap-3 group">
+                <div class="bg-emerald-800 p-3 rounded-xl group-hover:bg-emerald-700 transition-colors shadow-lg">
+                    <i data-lucide="zap" class="text-emerald-400 w-8 h-8"></i>
+                </div>
+                <div class="text-[10px] uppercase font-black text-emerald-200 tracking-widest italic">Szupergyors</div>
+            </div>
+            <div class="flex flex-col items-center gap-3 group">
+                <div class="bg-emerald-800 p-3 rounded-xl group-hover:bg-emerald-700 transition-colors shadow-lg">
+                    <i data-lucide="microscope" class="text-emerald-400 w-8 h-8"></i>
+                </div>
+                <div class="text-[10px] uppercase font-black text-emerald-200 tracking-widest italic">Pontos hibahely</div>
+            </div>
+            <div class="flex flex-col items-center gap-3 group">
+                <div class="bg-emerald-800 p-3 rounded-xl group-hover:bg-emerald-700 transition-colors shadow-lg">
+                    <i data-lucide="database" class="text-emerald-400 w-8 h-8"></i>
+                </div>
+                <div class="text-[10px] uppercase font-black text-emerald-200 tracking-widest italic">Nincs DB igény</div>
+            </div>
+        </div>
+
+        <!-- Lábléc -->
+        <div class="text-center text-emerald-800/40 text-[10px] font-black uppercase tracking-[0.3em] py-4">
+            Fullstack CRUD Projekt • Unit Tesztelés Dokumentáció
+        </div>
+    </div>
+
+    <!-- Lucide Ikonok inicializálása -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

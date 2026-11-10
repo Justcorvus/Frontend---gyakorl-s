@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* index.html egyedi stílusok */
+.nav-link.active {
+    background-color: #4f46e5;
+    color: white;
+}
+
+#content-frame {
+    width: 100%;
+    height: calc(100vh - 64px);
+    border: none;
+}
+
+.sidebar-scroll::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-scroll::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+
+/* TesztelesAltalanos_i.html egyedi stílusok */
+.animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .7; }
+}
+
+/* test-runner.html egyedi stílusok */
+body.test-runner-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f0f2f5;
+    color: #333;
+}
+
+.test-runner-page .card {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.test-runner-page .buttons {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.test-runner-page button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background: #007bff;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: background 0.2s;
+}
+
+.test-runner-page button:hover { background: #0056b3; }
+.test-runner-page button:disabled { background: #a5c8ed; cursor: not-allowed; }
+.test-runner-page button.btn-success { background: #28a745; }
+.test-runner-page button.btn-success:hover { background: #218838; }
+
+.test-runner-page pre {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    min-height: 300px;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace;
+    line-height: 1.5;
+}
+
+.test-runner-page .info-box {
+    background: #e9ecef;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    border-left: 5px solid #007bff;
+}
+
+.test-runner-page .info-box h3 { margin-top: 0; color: #0056b3; }
+.test-runner-page .info-box h4 { margin-bottom: 10px; color: #333; }
+.test-runner-page .info-box code { background: #dcdcdc; padding: 2px 6px; border-radius: 4px; color: #d63384; font-family: monospace; }
+.test-runner-page .info-box pre.code-example { min-height: auto; padding: 15px; margin-top: 10px; font-size: 13px; }

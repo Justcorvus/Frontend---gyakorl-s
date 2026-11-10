@@ -1,0 +1,34 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: left;
+}
+
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.container-lg {
+  max-width: 1200px;
+}
+
+.content-wrapper {
+  padding: 1rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.08);
+}
+
+.navbar .nav-link.active,
+.navbar .nav-link.active:focus {
+  font-weight: 600;
+}
+
+@media (max-width: 991.98px) {
+  .content-wrapper {
+    padding: 0.75rem;
+  }
+}
+

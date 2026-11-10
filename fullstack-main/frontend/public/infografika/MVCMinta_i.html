@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MVC Architektúra Infografika</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 p-6 md:p-12 text-slate-800">
+
+    <div class="max-w-5xl mx-auto space-y-10">
+        <!-- Fejléc -->
+        <div class="bg-gradient-to-br from-indigo-700 to-blue-600 rounded-3xl p-10 text-white shadow-2xl relative overflow-hidden">
+            <div class="relative z-10">
+                <h1 class="text-4xl font-black mb-2 uppercase tracking-tight italic">MVC Architektúra</h1>
+                <p class="text-indigo-100 text-xl max-w-2xl">
+                    Model-View-Controller: A logika szétválasztása a Full-stack projektben.
+                </p>
+            </div>
+            <!-- Háttér dekoráció ikon -->
+            <div class="absolute -bottom-10 -right-10 opacity-10 rotate-12">
+                <i data-lucide="layers" class="w-[320px] h-[320px]"></i>
+            </div>
+        </div>
+
+        <!-- A Hármas Egység (The Triad) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+            <!-- View (Nézet) -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-b-8 border-sky-400 hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-sky-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="layout" class="text-sky-600" size="32"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2 text-sky-900 uppercase tracking-tighter italic">View (Nézet)</h2>
+                <div class="text-xs font-bold text-sky-500 mb-4 uppercase">Frontend • React</div>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                    A felhasználói felület. Adatokat jelenít meg, és fogadja az interakciókat. Nincs üzleti logikája.
+                </p>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 italic text-xs text-slate-500">
+                    Példa: UserTable.jsx (Táblázat megjelenítése)
+                </div>
+            </div>
+
+            <!-- Controller (Vezérlő) -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-b-8 border-indigo-500 hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-indigo-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="cpu" class="text-indigo-600" size="32"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2 text-indigo-900 uppercase tracking-tighter italic">Controller</h2>
+                <div class="text-xs font-bold text-indigo-500 mb-4 uppercase">Backend • Express API</div>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                    Az összekötő kapocs. Fogadja a kéréseket, feldolgozza őket, és utasítja a Modellt.
+                </p>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 italic text-xs text-slate-500">
+                    Példa: app.post('/api/users') végpont
+                </div>
+            </div>
+
+            <!-- Model (Modell) -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border-b-8 border-emerald-500 hover:-translate-y-2 transition-transform duration-300">
+                <div class="bg-emerald-100 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                    <i data-lucide="database" class="text-emerald-600" size="32"></i>
+                </div>
+                <h2 class="text-2xl font-bold mb-2 text-emerald-900 uppercase tracking-tighter italic">Model (Modell)</h2>
+                <div class="text-xs font-bold text-emerald-500 mb-4 uppercase">Adatlogika • SQL</div>
+                <p class="text-slate-600 text-sm leading-relaxed mb-6">
+                    Az adatokért és üzleti logikáért felel. Közvetlenül kommunikál az adatbázissal.
+                </p>
+                <div class="bg-slate-50 p-4 rounded-lg border border-slate-100 italic text-xs text-slate-500">
+                    Példa: dbPool.query("INSERT INTO users...")
+                </div>
+            </div>
+        </div>
+
+        <!-- Kommunikációs folyamat (Interaction Flow) -->
+        <div class="bg-slate-800 rounded-3xl p-10 text-white shadow-xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-8 opacity-5">
+                <i data-lucide="box" class="w-[140px] h-[140px]"></i>
+            </div>
+            <h2 class="text-2xl font-bold mb-8 flex items-center gap-3">
+                <i data-lucide="layers" class="text-indigo-400"></i> Kommunikációs Ciklus
+            </h2>
+            
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 relative">
+                <!-- 1. Lépés -->
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <div class="w-12 h-12 rounded-full bg-sky-500 flex items-center justify-center font-bold text-white shadow-lg">1</div>
+                    <div class="text-xs font-bold uppercase text-sky-400">View</div>
+                    <div class="text-[10px] text-slate-400">Felhasználó gombot nyom</div>
+                </div>
+
+                <i data-lucide="arrow-right" class="hidden md:block text-slate-600 shrink-0"></i>
+                <i data-lucide="arrow-down" class="md:hidden text-slate-600 shrink-0"></i>
+
+                <!-- 2. Lépés -->
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <div class="w-12 h-12 rounded-full bg-indigo-500 flex items-center justify-center font-bold text-white shadow-lg">2</div>
+                    <div class="text-xs font-bold uppercase text-indigo-400">Controller</div>
+                    <div class="text-[10px] text-slate-400">API végpont fogadja</div>
+                </div>
+
+                <i data-lucide="arrow-right" class="hidden md:block text-slate-600 shrink-0"></i>
+                <i data-lucide="arrow-down" class="md:hidden text-slate-600 shrink-0"></i>
+
+                <!-- 3. Lépés -->
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <div class="w-12 h-12 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-white shadow-lg">3</div>
+                    <div class="text-xs font-bold uppercase text-emerald-400">Model</div>
+                    <div class="text-[10px] text-slate-400">SQL lekérdezés lefut (DB)</div>
+                </div>
+
+                <i data-lucide="arrow-right" class="hidden md:block text-slate-600 shrink-0"></i>
+                <i data-lucide="arrow-down" class="md:hidden text-slate-600 shrink-0"></i>
+
+                <!-- 4. Lépés -->
+                <div class="flex flex-col items-center gap-2 text-center">
+                    <div class="w-12 h-12 rounded-full bg-slate-600 flex items-center justify-center font-bold italic text-white shadow-lg">4</div>
+                    <div class="text-xs font-bold uppercase text-slate-400">Válasz</div>
+                    <div class="text-[10px] text-slate-400">Frontend frissül</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konklúzió / Key Takeaway -->
+        <div class="bg-indigo-50 border border-indigo-100 rounded-2xl p-8 flex items-start gap-6">
+            <div class="bg-indigo-600 text-white p-3 rounded-xl shrink-0 shadow-lg">
+                <i data-lucide="box" size="24"></i>
+            </div>
+            <div>
+                <h4 class="font-bold text-indigo-900 mb-1">A szétválasztás előnye</h4>
+                <p class="text-sm text-indigo-700 leading-relaxed italic">
+                    "A Modell nem tudja, hogyan néz ki a felület, a Nézet nem tudja, hogyan van tárolva az adat. Ez teszi a rendszert karbantarthatóvá és rugalmassá."
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lucide ikonok inicializálása -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

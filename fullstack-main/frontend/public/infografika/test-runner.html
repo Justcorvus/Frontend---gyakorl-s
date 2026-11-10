@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧪 Teszt Futtató Központ</title>
+    <style>
+        body { 
+            font-family: system-ui, -apple-system, sans-serif; 
+            max-width: 900px; 
+            margin: 0 auto; 
+            padding: 20px; 
+            background: #f0f2f5; 
+            color: #333;
+        }
+        .card { 
+            background: white; 
+            padding: 30px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
+        }
+        .buttons { 
+            display: flex; 
+            gap: 15px; 
+            margin-bottom: 25px; 
+            flex-wrap: wrap;
+        }
+        button { 
+            padding: 12px 20px; 
+            border: none; 
+            border-radius: 6px; 
+            background: #007bff; 
+            color: white; 
+            cursor: pointer; 
+            font-weight: bold; 
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+        button:hover { background: #0056b3; }
+        button:disabled { background: #a5c8ed; cursor: not-allowed; }
+        
+        /* Terminál stílusú kimenet */
+        pre { 
+            background: #1e1e1e; 
+            color: #d4d4d4; 
+            padding: 20px; 
+            border-radius: 8px; 
+            overflow-x: auto; 
+            min-height: 300px; 
+            white-space: pre-wrap;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.5;
+        }
+        .info-box {
+            background: #e9ecef;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-size: 14px;
+            border-left: 5px solid #007bff;
+        }
+        .info-box h3 { margin-top: 0; color: #0056b3; }
+        .info-box h4 { margin-bottom: 10px; color: #333; }
+        .info-box code { background: #dcdcdc; padding: 2px 6px; border-radius: 4px; color: #d63384; font-family: monospace; }
+        .info-box pre.code-example { min-height: auto; padding: 15px; margin-top: 10px; font-size: 13px; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🧪 Webes Teszt Futtató</h1>
+        <p>Kattints egy gombra a backend tesztek futtatásához. A folyamat eltarthat néhány másodpercig.</p>
+
+        <div class="buttons">
+            <button onclick="runTest('sum')">➕ Egyszerű Teszt (Sum)</button>
+            <button onclick="runTest('unit')">⚡ Unit Tesztek</button>
+            <button onclick="runTest('integration')">🔗 Integrációs Tesztek</button>
+            <button onclick="runTest('all')" style="background: #28a745;">🚀 Összes Teszt Futtatása</button>
+        </div>
+
+        <div class="info-box">
+            <h3>💡 Tesztek módosítása</h3>
+            <p>A tesztek módosításához a <code>backend</code> mappában található tesztfájlokat kell szerkesztened. A kód módosítása és elmentése után elegendő csak újra megnyomni a fenti futtatás gombok valamelyikét.</p>
+            <p><strong>⚠️ Fontos:</strong> A tesztek webes felületről történő indításához a <strong>backend szervernek mindenképpen futnia kell!</strong></p>
+            
+            <h4>📝 Példa: A <code>backend/sum.test.js</code> kiegészítése egy új teszttel</h4>
+            <pre class="code-example">const sum = require('./sum');
+
+test('összeadja az 1 + 2-t, hogy 3-at kapjunk', () => {
+    expect(sum(1, 2)).toBe(3);
+});
+
+// Próbáld meg hozzáadni ezt az új tesztet a fájl aljára:
+test('összeadja a 10 + 5-öt, hogy 15-öt kapjunk', () => {
+    expect(sum(10, 5)).toBe(15);
+});</pre>
+        </div>
+
+        <pre id="output">Kattints egy fenti gombra a tesztelés megkezdéséhez...</pre>
+    </div>
+
+    <script>
+        async function runTest(type) {
+            const outputEl = document.getElementById('output');
+            const buttons = document.querySelectorAll('button');
+
+            outputEl.innerHTML = 'Futtatás folyamatban... Kérlek várj! ⏳\n(Az integrációs tesztek akár 5-10 másodpercet is igénybe vehetnek)';
+            buttons.forEach(b => b.disabled = true);
+
+            try {
+                // A backend URL-je (ha a backend portja más, írd át a 3001-et)
+                const response = await fetch('http://localhost:3001/api/run-tests', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ type })
+                });
+
+                const data = await response.json();
+                // A Jest a kimenetét gyakran a stderr-be írja, így mindkettőt megjelenítjük
+                outputEl.textContent = data.output || 'Nincs megjeleníthető kimenet. (Lehet, hogy a tesztek csendben, sikeresen lefutottak!)';
+            } catch (error) {
+                outputEl.textContent = '❌ Hiba történt a szerverhez való kapcsolódáskor:\n' + error.message + '\n\nEllenőrizd, hogy a backend szerver fut-e!';
+            } finally {
+                buttons.forEach(b => b.disabled = false);
+            }
+        }
+    </script>
+</body>
+</html>

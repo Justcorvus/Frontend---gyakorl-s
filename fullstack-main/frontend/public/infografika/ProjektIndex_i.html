@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tanulási Útmutató Roadmap</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-50 p-4 md:p-12 text-slate-800">
+    <div class="max-w-4xl mx-auto space-y-16">
+        
+        <!-- Hero -->
+        <div class="bg-slate-900 rounded-[3rem] p-12 text-white shadow-2xl relative overflow-hidden text-center md:text-left">
+            <div class="relative z-10 flex flex-col md:flex-row items-center gap-10">
+                <div class="bg-indigo-600 p-6 rounded-3xl shadow-2xl shadow-indigo-500/20">
+                    <i data-lucide="graduation-cap" class="w-16 h-16 text-white"></i>
+                </div>
+                <div class="space-y-4">
+                    <h1 class="text-5xl font-black uppercase tracking-tighter italic leading-none">Tanulási<br>Útiterv</h1>
+                    <p class="text-slate-400 text-lg italic max-w-md">
+                        Az alapoktól a tesztelt, működő Fullstack alkalmazásig.
+                    </p>
+                </div>
+            </div>
+            <i data-lucide="map" class="absolute -right-20 -bottom-20 w-80 h-80 opacity-5 rotate-12"></i>
+        </div>
+
+        <!-- Timeline -->
+        <div class="relative space-y-12">
+            <!-- Line -->
+            <div class="absolute left-8 top-4 bottom-4 w-1 bg-slate-200 hidden sm:block"></div>
+
+            <!-- Steps -->
+            <div class="flex flex-col sm:flex-row gap-8 relative group">
+                <div class="w-16 h-16 rounded-2xl bg-slate-800 text-white flex items-center justify-center shadow-xl shrink-0 group-hover:scale-110 transition-transform relative z-10">
+                    <i data-lucide="terminal"></i>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 flex-1 relative">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-black italic uppercase tracking-tighter text-slate-800 leading-none">1. Szakasz: Alapok</h3>
+                        <span class="text-[9px] font-black text-slate-300 uppercase tracking-widest italic">Setup</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6 italic">A környezet kialakítása, a szerver vázának megépítése és a technológiai stack megismerése.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-[9px] font-black uppercase text-slate-500 italic">Node.js Init</span>
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-[9px] font-black uppercase text-slate-500 italic">Express Server</span>
+                        <span class="bg-slate-100 px-3 py-1 rounded-full text-[9px] font-black uppercase text-slate-500 italic">MySQL Docker/XAMPP</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-8 relative group">
+                <div class="w-16 h-16 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-xl shrink-0 group-hover:scale-110 transition-transform relative z-10">
+                    <i data-lucide="code-2"></i>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 flex-1 relative">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-black italic uppercase tracking-tighter text-indigo-900 leading-none">2. Szakasz: Logika</h3>
+                        <span class="text-[9px] font-black text-indigo-300 uppercase tracking-widest italic">Development</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6 italic">CRUD műveletek implementálása a backendben és interaktív komponensek fejlesztése React-ben.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-indigo-50 px-3 py-1 rounded-full text-[9px] font-black uppercase text-indigo-600 italic">API Endpoints</span>
+                        <span class="bg-indigo-50 px-3 py-1 rounded-full text-[9px] font-black uppercase text-indigo-600 italic">React Hooks</span>
+                        <span class="bg-indigo-50 px-3 py-1 rounded-full text-[9px] font-black uppercase text-indigo-600 italic">Axios Auth</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-8 relative group">
+                <div class="w-16 h-16 rounded-2xl bg-emerald-500 text-white flex items-center justify-center shadow-xl shrink-0 group-hover:scale-110 transition-transform relative z-10">
+                    <i data-lucide="beaker"></i>
+                </div>
+                <div class="bg-white p-8 rounded-3xl shadow-lg border border-slate-100 flex-1 relative">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-2xl font-black italic uppercase tracking-tighter text-emerald-900 leading-none">3. Szakasz: Minőség</h3>
+                        <span class="text-[9px] font-black text-emerald-300 uppercase tracking-widest italic">Testing</span>
+                    </div>
+                    <p class="text-xs text-slate-500 leading-relaxed mb-6 italic">Hibamentes kód garantálása unit tesztekkel és valódi adatbázis integrációs folyamatokkal.</p>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-emerald-50 px-3 py-1 rounded-full text-[9px] font-black uppercase text-emerald-600 italic">Jest Unit Tests</span>
+                        <span class="bg-emerald-50 px-3 py-1 rounded-full text-[9px] font-black uppercase text-emerald-600 italic">DB Integration</span>
+                        <span class="bg-emerald-50 px-3 py-1 rounded-full text-[9px] font-black uppercase text-emerald-600 italic">Mocking DB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Milestone -->
+            <div class="bg-indigo-600 rounded-[2.5rem] p-10 text-center text-white shadow-2xl relative overflow-hidden group">
+                <div class="relative z-10 space-y-6">
+                    <i data-lucide="flag" class="mx-auto text-white w-12 h-12 shadow-xl"></i>
+                    <h2 class="text-3xl font-black italic uppercase tracking-tighter">CÉL: Teljes Értés</h2>
+                    <p class="text-indigo-100 text-xs italic max-w-2xl mx-auto leading-relaxed">
+                        "A projekt végére nem csak másolni fogod a kódot, hanem átlátod a rendszerek közötti összefüggéseket, és önállóan tudsz modern webes megoldásokat tervezni."
+                    </p>
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-br from-indigo-500 to-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+            </div>
+        </div>
+
+        <!-- Footer Checklist -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center gap-3 shadow-sm">
+                <i data-lucide="check-circle" class="text-emerald-500 w-5 h-5 shrink-0"></i>
+                <span class="text-[9px] font-black uppercase italic text-slate-700">Telepítés kész</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center gap-3 shadow-sm">
+                <i data-lucide="check-circle" class="text-emerald-500 w-5 h-5 shrink-0"></i>
+                <span class="text-[9px] font-black uppercase italic text-slate-700">API üzemel</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center gap-3 shadow-sm">
+                <i data-lucide="check-circle" class="text-emerald-500 w-5 h-5 shrink-0"></i>
+                <span class="text-[9px] font-black uppercase italic text-slate-700">UI React-ben</span>
+            </div>
+            <div class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center gap-3 shadow-sm">
+                <i data-lucide="check-circle" class="text-emerald-500 w-5 h-5 shrink-0"></i>
+                <span class="text-[9px] font-black uppercase italic text-slate-700">Tesztek lefutnak</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

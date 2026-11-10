@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fullstack & CRUD Architektúra</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-slate-900 p-4 md:p-12 text-slate-300">
+    <div class="max-w-5xl mx-auto space-y-16">
+        <!-- Hero Header -->
+        <div class="text-center space-y-6">
+            <h1 class="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase italic leading-none">
+                Fullstack <span class="text-indigo-500">&</span> CRUD
+            </h1>
+            <p class="text-slate-400 text-lg max-w-2xl mx-auto italic">
+                A modern szoftverfejlesztés alapkövei: a kód felépítése és az adatok kezelésének művészete.
+            </p>
+        </div>
+
+        <!-- Layers Diagram -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch relative">
+            <!-- Frontend -->
+            <div class="bg-indigo-950/30 border border-indigo-500/30 p-10 rounded-3xl text-center relative group hover:border-indigo-500 transition-all">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-indigo-500 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Kliensoldal</div>
+                <i data-lucide="globe" class="mx-auto mb-6 text-indigo-400 w-12 h-12"></i>
+                <h3 class="text-2xl font-bold text-white mb-4 italic uppercase">Frontend</h3>
+                <p class="text-xs text-indigo-200/60 mb-6 italic leading-relaxed">Vizuális megjelenítés és felhasználói interakciók kezelése React segítségével.</p>
+                <div class="space-y-2 text-[11px] font-bold">
+                    <div class="bg-indigo-900/50 p-2 rounded text-indigo-200 border border-indigo-800/50">React Components</div>
+                    <div class="bg-indigo-900/50 p-2 rounded text-indigo-200 border border-indigo-800/50">Axios HTTP Client</div>
+                </div>
+            </div>
+
+            <!-- Bridge -->
+            <div class="flex flex-col justify-center items-center py-6">
+                <div class="bg-slate-800 px-4 py-1 rounded-full border border-slate-700 text-[9px] font-black text-slate-400 mb-4 uppercase tracking-widest italic">REST API (JSON)</div>
+                <div class="flex flex-col gap-2">
+                    <i data-lucide="arrow-right-left" class="text-slate-600 w-10 h-10 hidden lg:block"></i>
+                    <i data-lucide="chevron-down" class="text-slate-600 w-10 h-10 lg:hidden"></i>
+                </div>
+                <div class="bg-slate-800 px-4 py-1 rounded-full border border-slate-700 text-[9px] font-black text-slate-400 mt-4 uppercase tracking-widest italic">HTTP Protokoll</div>
+            </div>
+
+            <!-- Backend -->
+            <div class="bg-emerald-950/30 border border-emerald-500/30 p-10 rounded-3xl text-center relative group hover:border-emerald-500 transition-all">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-500 text-white px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest">Szerveroldal</div>
+                <div class="flex justify-center gap-4 mb-6">
+                    <i data-lucide="server" class="text-emerald-400 w-12 h-12"></i>
+                    <i data-lucide="database" class="text-emerald-500 w-12 h-12"></i>
+                </div>
+                <h3 class="text-2xl font-bold text-white mb-4 italic uppercase">Backend & DB</h3>
+                <p class="text-xs text-emerald-200/60 mb-6 italic leading-relaxed">Adatfeldolgozás, biztonság és tartós tárolás Node.js és MySQL segítségével.</p>
+                <div class="space-y-2 text-[11px] font-bold">
+                    <div class="bg-emerald-900/50 p-2 rounded text-emerald-200 border border-emerald-800/50">Express.js Logic</div>
+                    <div class="bg-emerald-900/50 p-2 rounded text-emerald-200 border border-emerald-800/50">MySQL / SQL Queries</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CRUD Grid -->
+        <div class="bg-slate-800/40 border border-slate-700/50 p-10 rounded-[2.5rem] shadow-2xl relative overflow-hidden">
+            <div class="absolute top-0 right-0 p-10 opacity-5 rotate-12">
+                 <i data-lucide="activity" class="w-64 h-64 text-white"></i>
+            </div>
+            
+            <h2 class="text-3xl font-black text-white mb-10 flex items-center gap-4 uppercase italic tracking-tighter">
+                <i data-lucide="repeat" class="text-indigo-400"></i> A CRUD Műveletek Logikája
+            </h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
+                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 group hover:border-emerald-500 transition-all">
+                    <div class="bg-emerald-500 w-12 h-12 rounded-xl flex items-center justify-center text-white text-3xl font-black mb-6 shadow-lg shadow-emerald-500/20 italic">C</div>
+                    <h4 class="text-xl font-black text-white mb-1 italic uppercase tracking-tighter">Create</h4>
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-6">Új adat felvétele</div>
+                    <div class="space-y-3 text-[10px] font-bold">
+                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>HTTP:</span> <span class="text-emerald-400 font-black">POST</span></div>
+                        <div class="flex justify-between italic"><span>SQL:</span> <span class="text-slate-400">INSERT INTO...</span></div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 group hover:border-blue-500 transition-all">
+                    <div class="bg-blue-500 w-12 h-12 rounded-xl flex items-center justify-center text-white text-3xl font-black mb-6 shadow-lg shadow-blue-500/20 italic">R</div>
+                    <h4 class="text-xl font-black text-white mb-1 italic uppercase tracking-tighter">Read</h4>
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-6">Adatok lekérése</div>
+                    <div class="space-y-3 text-[10px] font-bold">
+                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>HTTP:</span> <span class="text-blue-400 font-black">GET</span></div>
+                        <div class="flex justify-between italic"><span>SQL:</span> <span class="text-slate-400">SELECT * FROM...</span></div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 group hover:border-amber-500 transition-all">
+                    <div class="bg-amber-500 w-12 h-12 rounded-xl flex items-center justify-center text-white text-3xl font-black mb-6 shadow-lg shadow-amber-500/20 italic">U</div>
+                    <h4 class="text-xl font-black text-white mb-1 italic uppercase tracking-tighter">Update</h4>
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-6">Adatok módosítása</div>
+                    <div class="space-y-3 text-[10px] font-bold">
+                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>HTTP:</span> <span class="text-amber-400 font-black">PATCH</span></div>
+                        <div class="flex justify-between italic"><span>SQL:</span> <span class="text-slate-400">UPDATE users...</span></div>
+                    </div>
+                </div>
+                <div class="bg-slate-900 p-8 rounded-3xl border border-slate-800 group hover:border-rose-500 transition-all">
+                    <div class="bg-rose-500 w-12 h-12 rounded-xl flex items-center justify-center text-white text-3xl font-black mb-6 shadow-lg shadow-rose-500/20 italic">D</div>
+                    <h4 class="text-xl font-black text-white mb-1 italic uppercase tracking-tighter">Delete</h4>
+                    <div class="text-[9px] font-black text-slate-500 uppercase tracking-widest mb-6">Adat törlése</div>
+                    <div class="space-y-3 text-[10px] font-bold">
+                        <div class="flex justify-between border-b border-slate-800 pb-2"><span>HTTP:</span> <span class="text-rose-400 font-black">DELETE</span></div>
+                        <div class="flex justify-between italic"><span>SQL:</span> <span class="text-slate-400">DELETE FROM...</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-indigo-600 p-10 rounded-[2.5rem] text-center shadow-2xl relative overflow-hidden group">
+            <div class="relative z-10 space-y-4">
+                <i data-lucide="layers" class="mx-auto mb-4 text-indigo-200/50 w-10 h-10"></i>
+                <h3 class="text-3xl font-black text-white italic uppercase tracking-tighter">Összegzés</h3>
+                <p class="text-indigo-100 max-w-3xl mx-auto italic text-sm leading-relaxed">
+                    "A Fullstack alkalmazás lényege az adatok folyamatos áramlása: a felhasználó kérést indít a Frontendről, a Backend feldolgozza azt, az Adatbázis pedig tartósan tárolja a változásokat a CRUD elvek mentén."
+                </p>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-tr from-indigo-700 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

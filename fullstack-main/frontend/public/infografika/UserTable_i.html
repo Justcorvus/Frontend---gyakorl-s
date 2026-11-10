@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserTable.jsx Infografika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-blue-50 p-4 md:p-8 text-slate-800">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <!-- Header -->
+        <div class="bg-blue-600 rounded-2xl p-8 text-white shadow-xl flex items-center justify-between relative overflow-hidden">
+            <div class="relative z-10">
+                <h1 class="text-3xl font-bold mb-2 uppercase italic tracking-tighter">UserTable.jsx</h1>
+                <p class="text-blue-100 text-lg">"A listázás koordinátora és szerkezeti váza"</p>
+            </div>
+            <i data-lucide="table" class="opacity-20 w-16 h-16 relative z-10"></i>
+        </div>
+
+        <!-- Hierarchy -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+            <h2 class="text-2xl font-bold mb-10 flex items-center gap-2 uppercase tracking-tighter text-blue-900">
+                <i data-lucide="list" class="text-blue-500 w-6 h-6"></i> Hierarchia & Adatáramlás
+            </h2>
+
+            <div class="flex flex-col items-center gap-4 relative">
+                <!-- App -->
+                <div class="w-full sm:w-2/3 bg-slate-800 text-white p-4 rounded-lg text-center font-bold text-sm shadow-md">
+                    App.jsx
+                    <div class="text-[10px] font-normal text-slate-400 mt-1 uppercase tracking-widest">Master State & Logic</div>
+                </div>
+
+                <i data-lucide="chevron-down" class="text-slate-300 w-8 h-8"></i>
+
+                <!-- Table -->
+                <div class="w-full sm:w-3/4 bg-blue-100 border-2 border-blue-500 p-6 rounded-xl text-center font-bold shadow-md relative group">
+                    <span class="text-blue-900 text-sm">UserTable.jsx</span>
+                    <div class="flex justify-center gap-3 mt-4">
+                        <div class="bg-white px-3 py-1 rounded-full text-[9px] text-blue-600 border border-blue-200 uppercase font-black tracking-tighter">Thead (Fix)</div>
+                        <div class="bg-white px-3 py-1 rounded-full text-[9px] text-blue-600 border border-blue-200 uppercase font-black tracking-tighter">Map Loop (Dinamikus)</div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 w-full justify-center py-2">
+                    <i data-lucide="chevron-down" class="text-slate-200 w-6 h-6"></i>
+                    <i data-lucide="chevron-down" class="text-slate-200 w-6 h-6"></i>
+                    <i data-lucide="chevron-down" class="text-slate-200 w-6 h-6"></i>
+                </div>
+
+                <!-- Rows -->
+                <div class="grid grid-cols-3 gap-4 w-full">
+                    <div class="bg-slate-50 border border-slate-200 p-3 rounded-lg text-center shadow-sm">
+                        <div class="text-[9px] font-black text-slate-400 mb-1 uppercase">SOR 1</div>
+                        <div class="text-[10px] font-bold text-blue-700 leading-tight">UserTableRow</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 p-3 rounded-lg text-center shadow-sm">
+                        <div class="text-[9px] font-black text-slate-400 mb-1 uppercase">SOR 2</div>
+                        <div class="text-[10px] font-bold text-blue-700 leading-tight">UserTableRow</div>
+                    </div>
+                    <div class="bg-slate-50 border border-slate-200 p-3 rounded-lg text-center shadow-sm">
+                        <div class="text-[9px] font-black text-slate-400 mb-1 uppercase">SOR 3</div>
+                        <div class="text-[10px] font-bold text-blue-700 leading-tight">UserTableRow</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="font-bold flex items-center gap-2 mb-4 text-blue-600 uppercase text-xs tracking-widest">
+                    <i data-lucide="info" class="w-4 h-4"></i> Feladatai
+                </h3>
+                <ul class="space-y-3 text-xs text-slate-600">
+                    <li class="flex items-start gap-2 italic font-medium">
+                        <div class="mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full shrink-0"></div>
+                        A `users` tömbön való végigiterálás (`.map()`).
+                    </li>
+                    <li class="flex items-start gap-2 italic font-medium">
+                        <div class="mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full shrink-0"></div>
+                        A táblázat alapvető HTML vázának felépítése.
+                    </li>
+                    <li class="flex items-start gap-2 italic font-medium">
+                        <div class="mt-1.5 w-1.5 h-1.5 bg-blue-500 rounded-full shrink-0"></div>
+                        Prop-ok (ID, callbackek) továbbpasszolása a soroknak.
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-amber-400">
+                <h3 class="font-bold flex items-center gap-2 mb-4 text-amber-600 uppercase text-xs tracking-widest">
+                    <i data-lucide="alert-circle" class="w-4 h-4"></i> Fontos megjegyzés
+                </h3>
+                <div class="bg-amber-50 border border-amber-100 p-4 rounded-lg mb-4">
+                    <h4 class="font-black text-[10px] text-amber-800 uppercase mb-2">Üres lista kezelése</h4>
+                    <p class="text-[11px] text-amber-700 leading-relaxed italic">
+                        Ha nincs felhasználó, egyetlen sort jelenítünk meg colSpan="5" értékkel.
+                    </p>
+                </div>
+                <p class="text-[10px] text-slate-400 leading-tight">
+                    Minden sorhoz kötelező a <span class="font-bold text-blue-600">key={user.id}</span> prop a React számára!
+                </p>
+            </div>
+        </div>
+
+        <div class="bg-slate-800 rounded-xl p-4 text-white text-center shadow-lg">
+            <code class="text-[11px] font-mono tracking-tight text-blue-300">
+                PROPS: users, editingId, onEditStart, onEditCancel, onUpdate, onDelete
+            </code>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+/* UserForm.jsx stílusok */
+.user-form {
+    margin-bottom: 30px;
+    border: 1px solid #ccc;
+    padding: 15px;
+}
+
+.user-form input {
+    margin-right: 10px;
+    padding: 5px;
+}
+
+/* UserTable.jsx & UserTableRow.jsx stílusok */
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-header {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background-color: #f0f0f0;
+    text-align: left;
+}
+
+.table-cell {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.no-users-cell {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Gomb stílusok (UserTableRow.jsx) */
+.btn {
+    padding: 5px 10px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.btn:last-child {
+    margin-right: 0;
+}
+
+.btn-save {
+    background-color: #4CAF50;
+}
+
+.btn-cancel {
+    background-color: #9E9E9E;
+}
+
+.btn-edit {
+    background-color: #2196F3;
+}
+
+.btn-delete {
+    background-color: #F44336;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserForm.jsx Infografika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-emerald-50 p-4 md:p-8 text-slate-800">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <!-- Title -->
+        <div class="bg-emerald-600 rounded-2xl p-8 text-white shadow-xl flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold mb-2 uppercase italic tracking-tighter">UserForm.jsx</h1>
+                <p class="text-emerald-100 text-lg">"A prezentációs beviteli felület"</p>
+            </div>
+            <i data-lucide="file-text" class="opacity-20 w-16 h-16"></i>
+        </div>
+
+        <!-- Concept -->
+        <div class="bg-white p-6 rounded-xl shadow-md flex items-start gap-6 border-l-8 border-emerald-500">
+            <div class="bg-emerald-100 p-4 rounded-full hidden sm:block">
+                <i data-lucide="cpu" class="text-emerald-600 w-8 h-8"></i>
+            </div>
+            <div>
+                <h3 class="font-bold text-xl mb-2 uppercase tracking-tight text-emerald-900">"Buta" komponens koncepció</h3>
+                <p class="text-slate-600 text-sm leading-relaxed">
+                    A UserForm nem tud az adatbázisról. Csak összegyűjti az adatokat (local state) és értesíti a szülő komponenst, ha készen van az űrlap elküldésére.
+                </p>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- States -->
+            <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+                <h2 class="text-xl font-bold mb-6 flex items-center gap-2 border-b pb-4 uppercase tracking-tighter text-slate-700">
+                    <i data-lucide="shield-alert" class="text-emerald-500 w-5 h-5"></i> Belső Állapotok
+                </h2>
+                <div class="space-y-6">
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-emerald-500 rounded-full ring-4 ring-emerald-100"></div>
+                        <h4 className="font-bold text-slate-700 uppercase text-xs tracking-wider">Name (useState)</h4>
+                        <p className="text-sm text-slate-500 italic">Minden leütésre frissül az onChange segítségével.</p>
+                    </div>
+                    <div class="relative pl-8">
+                        <div class="absolute left-0 top-1 w-4 h-4 bg-emerald-500 rounded-full ring-4 ring-emerald-100"></div>
+                        <h4 className="font-bold text-slate-700 uppercase text-xs tracking-wider">Email (useState)</h4>
+                        <p className="text-sm text-slate-500 italic">React által kontrollált input mező.</p>
+                    </div>
+                </div>
+                
+                <div class="mt-10 pt-6 border-t border-slate-100">
+                    <h3 class="text-[10px] font-black text-slate-400 mb-4 uppercase tracking-widest">Külvilágtól kapott Propok</h3>
+                    <div class="flex gap-2">
+                        <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-[10px] font-bold uppercase">onAddUser</span>
+                        <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-[10px] font-bold uppercase">isSubmitting</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Flow -->
+            <div class="bg-slate-800 p-8 rounded-2xl shadow-lg text-slate-300">
+                <h2 class="text-xl font-bold mb-8 text-white flex items-center gap-2 uppercase tracking-tighter">
+                    <i data-lucide="send" class="w-5 h-5 text-emerald-400"></i> Adatáramlás útja
+                </h2>
+                <div class="space-y-4">
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center font-bold text-xs shrink-0">1</div>
+                        <p class="text-xs">Felhasználó kitölti az inputokat.</p>
+                    </div>
+                    <div class="w-0.5 h-4 bg-slate-600 ml-4"></div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center font-bold text-xs shrink-0">2</div>
+                        <p class="text-xs">Submit (Prevent Default lefut).</p>
+                    </div>
+                    <div class="w-0.5 h-4 bg-slate-600 ml-4"></div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-emerald-500 flex items-center justify-center font-bold text-xs shrink-0 text-white italic">3</div>
+                        <p class="text-xs font-bold text-emerald-400">Callback hívása az adatokkal.</p>
+                    </div>
+                    <div class="w-0.5 h-4 bg-slate-600 ml-4"></div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center font-bold text-xs shrink-0">4</div>
+                        <p class="text-xs italic">Mezők kiürítése (reset state).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- UI Skeleton -->
+        <div class="bg-white p-8 rounded-2xl shadow-lg border border-slate-200">
+            <h3 class="font-bold text-slate-800 mb-6 uppercase tracking-tight text-sm">Űrlap Vázlat & Működés</h3>
+            <div class="border-2 border-dashed border-slate-200 p-6 rounded-lg space-y-4">
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Név</label>
+                    <div class="bg-slate-50 border border-slate-200 p-3 rounded flex items-center justify-between">
+                        <span class="text-slate-400 text-sm">Írd be a nevet...</span>
+                        <i data-lucide="user" class="text-emerald-500 w-4 h-4"></i>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                    <label class="text-[10px] font-bold text-slate-400 uppercase">Email</label>
+                    <div class="bg-slate-50 border border-slate-200 p-3 rounded flex items-center justify-between">
+                        <span class="text-slate-400 text-sm">pelda@email.hu</span>
+                        <i data-lucide="mail" class="text-emerald-500 w-4 h-4"></i>
+                    </div>
+                </div>
+                <div class="bg-emerald-600 text-white p-3 rounded font-bold text-center text-sm shadow-md">
+                    Hozzáadás
+                </div>
+                <p class="text-[10px] text-center text-slate-400 italic">
+                    Ha isSubmitting === true ➔ a mezők és a gomb DISABLED állapotba kerülnek.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

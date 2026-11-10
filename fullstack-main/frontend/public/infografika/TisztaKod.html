@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiszta Kód (Clean Code) Infografika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Inter:wght@300;400;600;700;800&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        code, pre { font-family: 'Fira Code', monospace; font-size: 0.85rem; }
+        .code-card { transition: all 0.3s ease; }
+        .code-card:hover { transform: translateY(-2px); }
+    </style>
+</head>
+<body class="bg-slate-50 p-4 md:p-8 text-slate-800">
+    <div class="max-w-5xl mx-auto space-y-12">
+        
+        <!-- Header -->
+        <div class="bg-slate-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
+            <div class="bg-amber-500 p-5 rounded-3xl shadow-xl rotate-3">
+                <i data-lucide="sparkles" class="w-12 h-12 text-white"></i>
+            </div>
+            <div class="relative z-10 text-center md:text-left">
+                <h1 class="text-4xl font-black uppercase italic tracking-tighter text-white">Tiszta Kód <span class="text-amber-500">Alapelvek</span></h1>
+                <p class="text-slate-400 text-lg italic mt-2">"A jó kód olyan, mint egy jól megírt könyv: olvasás közben azonnal érted a történetet."</p>
+            </div>
+            <i data-lucide="code" class="absolute -right-10 -bottom-10 w-64 h-64 opacity-5 -rotate-12"></i>
+        </div>
+
+        <!-- Principles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white p-6 rounded-3xl shadow-md border-t-4 border-blue-500 hover:shadow-lg transition-shadow">
+                <i data-lucide="tag" class="text-blue-500 mb-4"></i>
+                <h3 class="font-bold text-sm uppercase mb-2">Beszédes nevek</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">A változó neve legyen leíró. Aki olvassa, tudja meg belőle, mit tárol és mi a célja.</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-md border-t-4 border-emerald-500 hover:shadow-lg transition-shadow">
+                <i data-lucide="target" class="text-emerald-500 mb-4"></i>
+                <h3 class="font-bold text-sm uppercase mb-2">Egy feladat (SRP)</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">Egy függvény csak egyetlen dolgot csináljon. Ha "és" kötőszó kell a leírásához, szedd szét!</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-md border-t-4 border-amber-500 hover:shadow-lg transition-shadow">
+                <i data-lucide="copy-slash" class="text-amber-500 mb-4"></i>
+                <h3 class="font-bold text-sm uppercase mb-2">DRY Elv</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">"Don't Repeat Yourself". Ne legyen kódduplikáció. Használj közös segédfüggvényeket.</p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl shadow-md border-t-4 border-purple-500 hover:shadow-lg transition-shadow">
+                <i data-lucide="message-square-off" class="text-purple-500 mb-4"></i>
+                <h3 class="font-bold text-sm uppercase mb-2">Kevesebb komment</h3>
+                <p class="text-xs text-slate-500 leading-relaxed">A kód legyen önmagát dokumentáló. Csak a "miért"-et kommenteld, ne a "hogyan"-t.</p>
+            </div>
+        </div>
+
+        <!-- Section: Commenting Art -->
+        <div class="space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="bg-indigo-100 p-2 rounded-lg">
+                    <i data-lucide="message-square" class="text-indigo-600 w-5 h-5"></i>
+                </div>
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter">A kommentelés evolúciója</h2>
+            </div>
+            <p class="text-sm text-slate-500 max-w-2xl">Nézzük meg, hogyan teszi feleslegessé a jó elnevezés a szájbarágós kommenteket ugyanannál a logikánál.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <!-- Bad Comments (Same Logic) -->
+                <div class="bg-rose-50 border border-rose-100 rounded-3xl overflow-hidden shadow-sm code-card">
+                    <div class="bg-rose-500 px-6 py-3 text-white text-[10px] font-black uppercase tracking-widest flex items-center justify-between">
+                        <span class="flex items-center gap-2"><i data-lucide="x-circle" class="w-4 h-4 text-white"></i> Rossz (Zajos & redundant)</span>
+                        <span class="bg-rose-600 px-2 py-1 rounded text-[8px]">HOSSZÚ MAGYARÁZAT</span>
+                    </div>
+                    <div class="p-6">
+<pre class="text-rose-900 leading-relaxed">
+// Ez a függvény kiszámolja a végösszeget.
+// Beveszi az 'a' mennyiséget és a 'b' egységárat.
+// Megszorozza őket és visszatér az eredménnyel.
+function calc(a, b) {
+  // Kiszámoljuk a szorzatot
+  let res = a * b;
+  // Visszaadjuk a kiszámolt értéket
+  return res;
+}
+</pre>
+                    </div>
+                </div>
+
+                <!-- Good Pattern (Same Logic) -->
+                <div class="bg-emerald-50 border border-emerald-100 rounded-3xl overflow-hidden shadow-sm code-card">
+                    <div class="bg-emerald-500 px-6 py-3 text-white text-[10px] font-black uppercase tracking-widest flex items-center justify-between">
+                        <span class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-white"></i> Jó (Tiszta & Öndokumentáló)</span>
+                        <span class="bg-emerald-600 px-2 py-1 rounded text-[8px]">NINCS KOMMENTRE SZÜKSÉG</span>
+                    </div>
+                    <div class="p-6">
+<pre class="text-emerald-900 leading-relaxed">
+function calculateTotalOrderValue(quantity, unitPrice) {
+  return quantity * unitPrice;
+}
+
+
+
+// Csak akkor kommentelj, ha üzleti okot magyarázol:
+// TODO: Itt később áfa-számítást is be kell vezetni.
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section: Logic Refactoring -->
+        <div class="space-y-6">
+            <div class="flex items-center gap-3">
+                <div class="bg-amber-100 p-2 rounded-lg">
+                    <i data-lucide="cpu" class="text-amber-600 w-5 h-5"></i>
+                </div>
+                <h2 class="text-2xl font-black uppercase italic tracking-tighter text-slate-800">Struktúra és Elnevezés</h2>
+            </div>
+
+            <!-- Example 1: Arrays -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div class="bg-rose-50 border border-rose-100 rounded-3xl overflow-hidden shadow-sm code-card">
+                    <div class="bg-rose-500 px-6 py-3 text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                        <i data-lucide="alert-triangle" class="w-4 h-4"></i> Kriptikus Logika
+                    </div>
+                    <div class="p-6">
+<pre class="text-rose-900 leading-relaxed">
+// Mi az az 'a' és a 'p'?
+function d(a) {
+  let x = 0;
+  for(let i=0; i < a.length; i++) {
+    x += a[i].p;
+  }
+  return x;
+}
+</pre>
+                    </div>
+                </div>
+                <div class="bg-emerald-50 border border-emerald-100 rounded-3xl overflow-hidden shadow-sm code-card">
+                    <div class="bg-emerald-500 px-6 py-3 text-white text-[10px] font-black uppercase tracking-widest flex items-center gap-2">
+                        <i data-lucide="check" class="w-4 h-4"></i> Kifejező Logika
+                    </div>
+                    <div class="p-6">
+<pre class="text-emerald-900 leading-relaxed">
+function sumProductPrices(products) {
+  return products.reduce((total, product) => {
+    return total + product.price;
+  }, 0);
+}
+</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Boy Scout Rule -->
+        <div class="bg-indigo-900 rounded-[2.5rem] p-10 text-white shadow-2xl relative overflow-hidden group">
+            <div class="relative z-10 flex flex-col md:flex-row items-start gap-8">
+                <div class="bg-indigo-500 p-4 rounded-2xl text-white shadow-lg shrink-0 group-hover:scale-110 transition-transform">
+                    <i data-lucide="tent" class="w-8 h-8"></i>
+                </div>
+                <div>
+                    <h4 class="font-black text-indigo-300 uppercase italic mb-2 tracking-tighter text-2xl">A Cserkészszabály</h4>
+                    <p class="text-indigo-100 italic leading-relaxed text-lg">
+                        "Mindig hagyd tisztábban a kódot, mint ahogy találtad." 
+                    </p>
+                    <p class="text-indigo-200/70 text-sm mt-4 leading-relaxed">
+                        Ha látsz egy rossz változónevet, javítsd ki. Ha látsz egy felesleges kommentet, töröld ki. Ne várj a holnapi refaktorálásra, tedd meg most!
+                    </p>
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-indigo-800 to-transparent opacity-50"></div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center py-8 border-t border-slate-200">
+            <p class="text-slate-400 text-[10px] font-black uppercase tracking-[0.4em]">Clean Code Standards • Fullstack Project 2024</p>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

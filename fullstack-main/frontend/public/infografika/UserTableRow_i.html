@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UserTableRow.jsx Infografika</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-rose-50 p-4 md:p-8 text-slate-800">
+    <div class="max-w-4xl mx-auto space-y-8">
+        <!-- Header -->
+        <div class="bg-rose-600 rounded-2xl p-8 text-white shadow-xl flex items-center justify-between relative overflow-hidden">
+            <div class="relative z-10">
+                <h1 class="text-3xl font-bold mb-2 uppercase italic tracking-tighter">UserTableRow.jsx</h1>
+                <p class="text-rose-100 text-lg">"Az interaktív adatsor és szerkesztési logika"</p>
+            </div>
+            <i data-lucide="zap" class="opacity-20 w-16 h-16 relative z-10"></i>
+        </div>
+
+        <!-- State/Mode Visualization -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <!-- Read Mode -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-slate-100 group">
+                <div class="flex items-center justify-between mb-6">
+                    <h3 class="font-black text-slate-400 uppercase text-[10px] tracking-widest">Megjelenítési mód</h3>
+                    <span class="px-2 py-0.5 bg-slate-100 text-slate-500 rounded text-[9px] font-bold">isEditing: false</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="p-3 bg-slate-50 rounded border border-slate-100 text-sm font-medium italic">
+                        Név: Teszt Elek
+                    </div>
+                    <div class="p-3 bg-slate-50 rounded border border-slate-100 text-sm text-slate-500 italic">
+                        Email: elek@teszt.hu
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <div class="flex-1 bg-blue-100 text-blue-700 py-2 rounded text-[10px] font-black uppercase text-center flex items-center justify-center gap-1">
+                            <i data-lucide="edit-2" class="w-3 h-3"></i> Szerkesztés
+                        </div>
+                        <div class="flex-1 bg-rose-100 text-rose-700 py-2 rounded text-[10px] font-black uppercase text-center flex items-center justify-center gap-1">
+                            <i data-lucide="trash-2" class="w-3 h-3"></i> Törlés
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Edit Mode -->
+            <div class="bg-white p-6 rounded-2xl shadow-lg border-2 border-rose-500 relative">
+                <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-rose-500 text-white px-4 py-1 rounded-full text-[9px] font-black uppercase shadow-lg tracking-widest">
+                    AKTÍV SZERKESZTÉS
+                </div>
+                <div class="flex items-center justify-between mb-6 pt-2">
+                    <h3 class="font-black text-rose-400 uppercase text-[10px] tracking-widest">Szerkesztési mód</h3>
+                    <span class="px-2 py-0.5 bg-rose-100 text-rose-500 rounded text-[9px] font-bold">isEditing: true</span>
+                </div>
+                <div class="space-y-4">
+                    <div class="relative">
+                        <input readonly value="Teszt Elek" class="w-full p-3 bg-rose-50 border border-rose-200 rounded text-sm focus:outline-none italic text-rose-900">
+                        <span class="absolute right-3 top-3 text-[8px] font-black text-rose-300 uppercase tracking-tighter">Local State</span>
+                    </div>
+                    <div class="relative">
+                        <input readonly value="elek@teszt.hu" class="w-full p-3 bg-rose-50 border border-rose-200 rounded text-sm focus:outline-none italic text-rose-900">
+                        <span class="absolute right-3 top-3 text-[8px] font-black text-rose-300 uppercase tracking-tighter">Local State</span>
+                    </div>
+                    <div class="flex gap-2 mt-4">
+                        <div class="flex-1 bg-emerald-500 text-white py-2 rounded text-[10px] font-black uppercase text-center flex items-center justify-center gap-1 shadow-md">
+                            <i data-lucide="save" class="w-3 h-3"></i> Mentés
+                        </div>
+                        <div class="flex-1 bg-slate-200 text-slate-700 py-2 rounded text-[10px] font-black uppercase text-center flex items-center justify-center gap-1">
+                            <i data-lucide="x-circle" class="w-3 h-3"></i> Mégse
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sync Logic -->
+        <div class="bg-slate-800 p-8 rounded-3xl shadow-xl text-white">
+            <h2 class="text-xl font-bold mb-6 flex items-center gap-3 uppercase tracking-tighter italic">
+                <i data-lucide="refresh-cw" class="text-rose-400"></i> Szinkronizáció (useEffect)
+            </h2>
+            <div class="bg-slate-700/40 p-6 rounded-xl border border-slate-600">
+                <p class="text-xs leading-relaxed text-slate-300 italic mb-4">
+                    "Amikor a külső `user` prop megváltozik az App-ban (pl. mentés után frissül a lista), a `useEffect` automatikusan átírja a sor saját belső állapotait, hogy a felület szinkronban maradjon."
+                </p>
+                <div class="flex justify-between items-center border-t border-slate-600 pt-4">
+                    <span class="text-[9px] font-mono text-slate-500 uppercase tracking-widest">Dependency: [user]</span>
+                    <span class="text-[9px] font-bold text-rose-400 uppercase italic">Reaktív frissülés</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tags -->
+        <div class="flex flex-wrap gap-3 justify-center">
+            <div class="px-4 py-2 bg-rose-100 text-rose-800 rounded-lg text-[10px] font-black uppercase border border-rose-200 shadow-sm">Ternary Renderelés</div>
+            <div class="px-4 py-2 bg-rose-100 text-rose-800 rounded-lg text-[10px] font-black uppercase border border-rose-200 shadow-sm">Belső useState Mentés</div>
+            <div class="px-4 py-2 bg-rose-100 text-rose-800 rounded-lg text-[10px] font-black uppercase border border-rose-200 shadow-sm">Lifecycle Sync</div>
+        </div>
+    </div>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
